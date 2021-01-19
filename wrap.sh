@@ -8,7 +8,7 @@ dirname "$0"
 
 echo "Running wrap.sh"
 
-cp -nr app-aws/app src/app
+cp -nr app-aws/app src/
 
 cd src/app
 npm install "@vendia/serverless-express"
