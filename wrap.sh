@@ -2,11 +2,15 @@
 
 set -ex
 
+echo "$0"
+dirname "$0"
+# cd $(dirname $0)
+
 echo "Running wrap.sh"
 
-echo ">> rm -rf hello-world"
-echo ">> mkdir app"
-echo ">> cp serverless-wrapper-lambda.js app/"
-echo ">> cp -r \${source-app} app/"
-echo ">> cd app"
-echo ">> npm install @vendia/serverless-express"
+cp -nr app-aws/app src/app
+
+cd src/app
+npm install "@vendia/serverless-express"
+
+# echo ">> npm install @vendia/serverless-express"

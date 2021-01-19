@@ -1,0 +1,18 @@
+{
+  "name": "app-aws-lambda-function",
+  "version": "1.0.0",
+  "description": "AWS App Wrapper https://github.com/cyclic-software/app-aws",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js",
+    "debug": "node --inspect-brk index.js"
+  },
+  "keywords": [],
+  "author": "cyclic-software",
+  "license": "MIT",
+  "dependencies": {
+    "@vendia/serverless-express": "^3.4.0",
+    "express": "^4.17.1"
+  }
+}
