@@ -12,6 +12,7 @@ echo "Running wrap.sh"
 
 cp app-aws/app/template.yaml src/
 cp app-aws/app/main/_lambda.js src/main/_lambda.js
+cp app-aws/app/samconfig.toml src/samconfig.toml
 
 cd src/main
 npm install "@vendia/serverless-express"
