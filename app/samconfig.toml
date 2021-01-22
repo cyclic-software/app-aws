@@ -3,6 +3,5 @@ version = 0.1
 [default.deploy]
 [default.deploy.parameters]
 stack_name = "sam-app-hello-world"
-region = "us-east-2"
 confirm_changeset = false
 capabilities = "CAPABILITY_IAM"
