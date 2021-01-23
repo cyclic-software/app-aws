@@ -8,8 +8,9 @@ dirname "$0"
 cd "$(dirname "$0")"
 
 APP_SRC=$1
-echo "moving $APP_SRC to lambda/*"
 
 ls -l "$APP_SRC"
 
-cp -r "$APP_SRC" lambda/
+echo "moving $APP_SRC to app/lambda/*"
+
+cp -r "$APP_SRC" app/lambda/
