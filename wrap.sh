@@ -8,13 +8,4 @@ dirname "$0"
 
 echo "Running wrap.sh"
 
-# cp -nr app-aws/app/ src/
-
-cp app-aws/app/template.yaml src/
-cp app-aws/app/main/_lambda.js src/main/_lambda.js
-cp app-aws/app/samconfig.toml src/samconfig.toml
-
-cd src/main
-npm install "@vendia/serverless-express"
-
-# echo ">> npm install @vendia/serverless-express"
+cp -r app-aws/app/ src/

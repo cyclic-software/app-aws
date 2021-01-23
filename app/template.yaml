@@ -28,6 +28,25 @@ Resources:
             Path: /{proxy+}
             Method: any
 
+  ContainerFunction:
+    Type: AWS::Serverless::Function
+    Metadata:
+      Dockerfile: Dockerfile
+      DockerContext: ./lambda
+    Properties:
+      FunctionName: !Sub "ContainerFunction${Namespace}"
+      PackageType: Image
+      Events: # Both / and /{path} are needed to properly capture all routes
+        AppRoot:
+          Type: HttpApi # More info about API Event Source: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#api
+          Properties:
+            Path: /
+            Method: any
+        AppAny:
+          Type: HttpApi # More info about API Event Source: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#api
+          Properties:
+            Path: /{proxy+}
+            Method: any
 
 Outputs:
   # ServerlessHttpApi is an implicit API created out of Events key under Serverless::Function
