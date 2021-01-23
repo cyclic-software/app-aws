@@ -1,11 +1,15 @@
 #!/usr/bin/env bash
 
-set -ex
+set -exuo pipefail
+echo "Running wrap.sh"
 
 echo "$0"
 dirname "$0"
-# cd $(dirname $0)
+cd "$(dirname "$0")"
 
-echo "Running wrap.sh"
+APP_SRC=$1
+echo "moving $APP_SRC to lambda/*"
 
-cp -r app-aws/app/ src/
+ls -l "$APP_SRC"
+
+cp -r "$APP_SRC" lambda/
