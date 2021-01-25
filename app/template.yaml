@@ -34,7 +34,7 @@ Resources:
       Dockerfile: Dockerfile
       DockerContext: ./lambda
     Properties:
-      FunctionName: !Sub "ContainerFunction${Namespace}"
+      # FunctionName: !Sub "ContainerFunction${Namespace}"
       PackageType: Image
       Events: # Both / and /{path} are needed to properly capture all routes
         AppRoot:
