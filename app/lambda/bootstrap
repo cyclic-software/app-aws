@@ -10,6 +10,10 @@ cd "$LAMBDA_TASK_ROOT" || (echo "exit on failure" && exit)
 APP_TYPE='UNKNOWN'
 if [ -f 'yarn.lock' ]; then
 	APP_TYPE='YARN'
+	yarn -v
+	node -v
+	yarn start &
+	sleep 1
 elif [ -f 'package-lock.json' ] || [ -f 'package.json' ]; then
 	APP_TYPE='NPM'
 	npm -v
