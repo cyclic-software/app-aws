@@ -7,21 +7,25 @@ set -xu
 
 cd "$LAMBDA_TASK_ROOT" || (echo "exit on failure" && exit)
 
-# echo '# env | sort'
-# env | sort
-
-# echo '# pwd'
-# pwd
-
-# echo '# ls -la'
-# ls -la
-
-npm -v
-node -v
-npx -v
-
-npm start &
-sleep 1
+APP_TYPE='UNKNOWN'
+if [ -f 'yarn.lock' ]; then
+	APP_TYPE='YARN'
+elif [ -f 'package-lock.json' ] || [ -f 'package.json' ]; then
+	APP_TYPE='NPM'
+	npm -v
+	node -v
+	npx -v
+	npm start &
+	sleep 1
+elif [ -f 'requirements.txt' ]; then
+	APP_TYPE='PIP'
+	export FLASK_APP=index.py
+	flask run
+else
+	echo 'Unknown app type. Going to just call install'
+	./install
+fi
+echo "${APP_TYPE}"
 
 # Processing
 while true; do
