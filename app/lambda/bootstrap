@@ -12,7 +12,7 @@ if [ -f 'yarn.lock' ]; then
 	APP_TYPE='YARN'
 	yarn -v
 	node -v
-	yarn start &
+	yarn start --cache-folder /tmp &
 	sleep 1
 elif [ -f 'package-lock.json' ] || [ -f 'package.json' ]; then
 	APP_TYPE='NPM'

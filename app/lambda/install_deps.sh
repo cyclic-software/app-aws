@@ -5,7 +5,7 @@ set -exou pipefail
 if [ -f 'yarn.lock' ]; then
 	APP_TYPE='YARN'
 	npm install --global yarn
-	yarn install
+	yarn install --cache-folder /tmp
 elif [ -f 'package-lock.json' ] || [ -f 'package.json' ]; then
 	APP_TYPE='NPM'
 	npm install
