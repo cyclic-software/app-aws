@@ -12,7 +12,7 @@ if [ -f 'yarn.lock' ]; then
 	APP_TYPE='YARN'
 	yarn -v
 	node -v
-	yarn node src/index.js --cache-folder /tmp &
+	yarn node src/index.js --cache-folder /tmp >/tmp/yarn-log.out 2>&1 &
 	sleep 1
 elif [ -f 'package-lock.json' ] || [ -f 'package.json' ]; then
 	APP_TYPE='NPM'
@@ -44,6 +44,9 @@ while true; do
 	# Run the handler function from the script
 	#   RESPONSE=$($(echo "$_HANDLER" | cut -d. -f2) "$EVENT_DATA")
 	echo "$EVENT_DATA"
+	echo "yarn-log ============================= begin"
+	cat /tmp/yarn-log.out
+	echo "yarn-log ============================= end"
 	RESPONSE=$(curl -sS -LD "$HEADERS" -X GET "http://localhost:3000")
 
 	# Send the response
